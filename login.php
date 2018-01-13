@@ -8,6 +8,37 @@
 </head>
 <body>
 <div>
+    <?php
+    $mysqli = new mysqli("localhost", "user", "password", "world");
+
+    if (mysqli_connect_errno()) {
+        printf("Подключение невозможно: %s\n", mysqli_connect_error());
+        exit();
+    }
+
+    /* Подготовленное выражение */
+    if ($stmt = $mysqli->prepare("SELECT Code, Name FROM Country WHERE Code LIKE ? LIMIT 5")) {
+
+        $stmt->bind_param("s", $code);
+        $code = "C%";
+
+        $stmt->execute();
+
+        /* Объявление переменных для заготовленного выражения*/
+        $stmt->bind_result($col1, $col2);
+
+        /* Выборка значений */
+        while ($stmt->fetch()) {
+            printf("%s %s\n", $col1, $col2);
+        }
+
+        /* Закрытие выражения */
+        $stmt->close();
+    }
+    /* Закрытие подключение */
+    $mysqli->close();
+
+    ?>
     <form action="#" id="login" name="login" method="post">
         <ul>
             <li><input type="text" name="user name" placeholder="login"></li>

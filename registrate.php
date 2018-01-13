@@ -8,7 +8,29 @@
 </head>
 <body>
 <div>
-    <form action="#" id="login" name="login" method="post">
+    <?php
+    if (isset($_POST['name'])) {
+        $mysqli = new mysqli('localhost', 'root', '', 'users');
+
+        if (mysqli_connect_errno()) {
+            printf("Подключение к серверу MySQL невозможно. Код ошибки: %s\n", mysqli_connect_error());
+            exit;
+        };
+        $name = $_POST['name'];
+        $lastName = $_POST['last name'];
+        $age = $_POST['age'];
+        $sex = $_POST['sex'];
+        $hobby = $_POST['hobby'];
+        $userName = $_POST['user name'];
+        $password = $_POST['password'];
+        $birthday = $_POST['birthday'];
+        $bankAccount = $_POST['bank account'];
+        $about = $_POST['shortly about yourself'];
+        $interest = $_POST['interest'];
+        $mysqli->query("INSERT INTO `users info`(`name`, `last name`, `age`, `sex`, `hobby`, `user name`, `password`, `birthday`, `bank account`, `shortly about yourself`, `interest`) VALUES ('$name', '$lastName', '$age', '$sex', '$hobby', '$userName', '$password', '$birthday', )");
+    }
+    ?>
+    <form action="registrate.php" id="login" name="login" method="post">
         <ul>
             <li><input type="text" name="name" placeholder="name" required="required"></li>
             <li><input type="text" name="last name" placeholder="last name" required="required"></li>
@@ -27,7 +49,8 @@
                     <option value="games">playing video games</option>
                 </select>
             </li>
-            <li><textarea name="about" id="about" cols="30" rows="10" placeholder="shortly about yourself"></textarea></li>
+            <li><textarea name="about" id="about" cols="30" rows="10" placeholder="shortly about yourself"></textarea>
+            </li>
             <li>
                 <select name="interest" id="interest" multiple="multiple">
                     <option value="art">art</option>
