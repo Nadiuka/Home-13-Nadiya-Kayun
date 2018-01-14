@@ -1,0 +1,99 @@
+* {
+    box-sizing: border-box;
+}
+
+.clearfix:after {
+    content: '';
+    clear: both;
+    display: block;
+}
+
+body, html {
+    height: 100%;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.wrapper {
+    background-color: #f0f8ff;
+    min-height: 100%;
+}
+
+nav {
+    background-color: #8fbc8f;
+    padding: 30px 40px;
+
+    a {
+        text-decoration: none;
+        padding: 20px;
+        font-weight: 600;
+        font-size: 18px;
+        color: #006400;
+        text-transform: uppercase;
+        transition: 0.5s;
+
+        &:hover {
+            transition: 0.5s;
+            opacity: 0.5;
+        }
+    }
+
+    li {
+        float: right;
+    }
+
+    .home-page {
+        float: left;
+    }
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+
+    li {
+        margin: 5px;
+        text-align: center;
+    }
+
+    .submit {
+        margin-top: 20px;
+    }
+}
+
+input[type="text"], input[type="submit"], input[type="password"], select, textarea {
+    border: 2px solid #8fbc8f;
+    padding: 10px;
+    transition: 0.7s;
+
+    &:hover {
+        transition: 0.7s;
+        opacity: 0.7;
+    }
+}
+
+input[type="submit"] {
+    background-color: #8fbc8f;
+    font-weight: 400;
+    padding: 10px 30px;
+}
+
+input[type="text"], input[type="submit"], input[type="password"] {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+p, .success, .error {
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #006400;
+    text-align: center;
+    padding: 10px;
+}
